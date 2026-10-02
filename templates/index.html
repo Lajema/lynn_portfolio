@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ data.name }} | Portfolio</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <!-- FontAwesome for Social Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo">{{ data.name }}</div>
+        <ul class="nav-links">
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#about">About & Timeline</a></li>
+            <li><a href="#contact" class="btn-nav">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="hero-content">
+            <span class="badge">Welcome to my portfolio</span>
+            <h1>Hi, I'm {{ data.name }}</h1>
+            <p class="subtitle">{{ data.title }}</p>
+            <a href="#projects" class="btn-primary">View My Work</a>
+        </div>
+    </header>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section">
+        <h2>Skills & Expertise</h2>
+        <div class="skills-grid">
+            {% for skill in data.skills %}
+            <div class="skill-card">{{ skill }}</div>
+            {% endfor %}
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section section-alt">
+        <h2>Sample Projects</h2>
+
+        <div class="carousel-wrapper">
+            <button class="carousel-btn carousel-btn-prev" id="prevBtn" aria-label="Previous projects">
+                <i class="fa-solid fa-chevron-left"></i>
+            </button>
+
+            <div class="carousel-viewport">
+                <div class="carousel-track" id="carouselTrack">
+                    {% for project in data.projects %}
+                    <div class="project-card">
+                        <a href="{{ project.url }}" target="_blank" rel="noopener noreferrer" class="project-thumbnail thumb-{{ project.color }}">
+                            <i class="{{ project.icon }}"></i>
+                        </a>
+                        <span class="category">{{ project.tag }}</span>
+                        <h3>{{ project.title }}</h3>
+                        <a href="{{ project.url }}" target="_blank" rel="noopener noreferrer" class="project-link">
+                            View Project <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                        </a>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <button class="carousel-btn carousel-btn-next" id="nextBtn" aria-label="Next projects">
+                <i class="fa-solid fa-chevron-right"></i>
+            </button>
+        </div>
+
+        <div class="carousel-dots" id="carouselDots"></div>
+    </section>
+
+    <!-- About & Professional Timeline Section -->
+    <section id="about" class="section">
+        <h2>About Me & Experience</h2>
+        
+        <div class="about-narrative">
+            <p>I am a Data Scientist and MEL (Monitoring, Evaluation & Learning) Officer specializing in statistical modeling, data analysis, and impact evaluation. With a solid foundation in statistics and ongoing advanced studies in Data Science, I translate complex dataset trends into actionable insights and strategic decisions.</p>
+        </div>
+
+        <div class="two-column-layout">
+            <!-- Career Narrative / Experience -->
+            <div class="column">
+                <h3><i class="fa-solid fa-briefcase"></i> Career Narrative</h3>
+                <div class="timeline">
+                    {% for item in data.timeline %}
+                    <div class="timeline-item">
+                        <span class="timeline-date">{{ item.year }}</span>
+                        <h4>{{ item.role }}</h4>
+                        <p class="company">{{ item.company }}</p>
+                        <p>{{ item.details }}</p>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <!-- Education & Certifications -->
+            <div class="column">
+                <h3><i class="fa-solid fa-graduation-cap"></i> Education & Certifications</h3>
+                <div class="timeline">
+                    {% for edu in data.education %}
+                    <div class="timeline-item">
+                        <span class="timeline-date">{{ edu.year }}</span>
+                        <h4>{{ edu.degree }}</h4>
+                        <p class="company">{{ edu.school }}</p>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section section-contact">
+        <div class="contact-card">
+            <h2>Looking to expand your team? Let's get in touch.</h2>
+            <p>I am currently available for full-time roles, MEL consultancies, and data science projects.</p>
+
+            <div class="social-links social-links-contact">
+                <a href="{{ data.socials.linkedin }}" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                    <i class="fa-brands fa-linkedin"></i>
+                    <span>LinkedIn</span>
+                </a>
+                <a href="{{ data.socials.github }}" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                    <i class="fa-brands fa-github"></i>
+                    <span>GitHub</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 {{ data.name }}. All rights reserved.</p>
+    </footer>
+
+    <script>
+        (function () {
+            const track = document.getElementById('carouselTrack');
+            const cards = Array.from(track.children);
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            const dotsWrap = document.getElementById('carouselDots');
+
+            function getVisibleCount() {
+                if (window.innerWidth <= 700) return 1;
+                if (window.innerWidth <= 1000) return 2;
+                return 3;
+            }
+
+            let visible = getVisibleCount();
+            let index = 0;
+            const maxIndex = () => Math.max(0, cards.length - visible);
+
+            function buildDots() {
+                dotsWrap.innerHTML = '';
+                const dotCount = maxIndex() + 1;
+                for (let i = 0; i < dotCount; i++) {
+                    const dot = document.createElement('button');
+                    dot.className = 'carousel-dot';
+                    dot.setAttribute('aria-label', 'Go to slide ' + (i + 1));
+                    dot.addEventListener('click', () => { index = i; update(); });
+                    dotsWrap.appendChild(dot);
+                }
+            }
+
+            function update() {
+                const cardWidth = cards[0].getBoundingClientRect().width;
+                const gap = parseFloat(getComputedStyle(track).gap || 0);
+                const offset = index * (cardWidth + gap);
+                track.style.transform = `translateX(-${offset}px)`;
+
+                prevBtn.disabled = index === 0;
+                nextBtn.disabled = index >= maxIndex();
+
+                Array.from(dotsWrap.children).forEach((d, i) => {
+                    d.classList.toggle('active', i === index);
+                });
+            }
+
+            prevBtn.addEventListener('click', () => {
+                index = Math.max(0, index - 1);
+                update();
+            });
+
+            nextBtn.addEventListener('click', () => {
+                index = Math.min(maxIndex(), index + 1);
+                update();
+            });
+
+            // Swipe support
+            let startX = 0;
+            let isDragging = false;
+            track.addEventListener('touchstart', (e) => {
+                startX = e.touches[0].clientX;
+                isDragging = true;
+            }, { passive: true });
+            track.addEventListener('touchend', (e) => {
+                if (!isDragging) return;
+                const diff = e.changedTouches[0].clientX - startX;
+                if (diff > 40) prevBtn.click();
+                else if (diff < -40) nextBtn.click();
+                isDragging = false;
+            });
+
+            window.addEventListener('resize', () => {
+                const newVisible = getVisibleCount();
+                if (newVisible !== visible) {
+                    visible = newVisible;
+                    index = Math.min(index, maxIndex());
+                    buildDots();
+                }
+                update();
+            });
+
+            buildDots();
+            update();
+        })();
+    </script>
+
+</body>
+</html>
