@@ -21,11 +21,11 @@ def home():
         ],
         "projects": [
             {
-                "title": "M-Pesa Performance Dashboard", 
-                "tag": "Data Science",
-                "icon": "fa-solid fa-mobile-screen-button",
+                "title": "Churn Prediction", 
+                "tag": "Data Science / Machine Learning",
+                "icon": "fa-solid fa-chart-pie",
                 "color": "teal",
-                "url": "https://github.com/Lajema/M-pesa_performace_dashboard"
+                "url": "https://github.com/Lajema/churn_prediction"
             },
             {
                 "title": "Kenya Economic Story", 
@@ -35,18 +35,25 @@ def home():
                 "url": "https://github.com/Lajema/Kenya-economic-story"
             },
             {
+                "title": "Marketing A/B Testing", 
+                "tag": "Python / Statsmodels",
+                "icon": "fa-solid fa-chart-line",
+                "color": "teal",
+                "url": "https://github.com/Lajema/Marketing-AB-Testing"
+            },
+            {
+                "title": "M-Pesa Performance Dashboard", 
+                "tag": "Data Science",
+                "icon": "fa-solid fa-mobile-screen-button",
+                "color": "teal",
+                "url": "https://github.com/Lajema/M-pesa_performace_dashboard"
+            },
+            {
                 "title": "Kenya Green Horizon Storyboard", 
                 "tag": "Data Analytics",
                 "icon": "fa-solid fa-leaf",
                 "color": "sage",
                 "url": "https://github.com/Lajema/kenya_green_horizon_storyboard"
-            },
-             {
-                "title": "Churn Prediction", 
-                "tag": "Data Science / Machine Learning",
-                "icon": "fa-solid fa-chart-pie",
-                "color": "teal",
-                "url": "https://github.com/Lajema/churn_prediction"
             },
             {
                 "title": "Kenyan Brand Sentiment Tracker", 
