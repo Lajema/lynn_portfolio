@@ -13,8 +13,9 @@ def home():
         },
         "skills": [
             "Data Analysis & Science", 
-            "Monitoring, Evaluation & Learning (MEL)", 
-            "Python & Flask", 
+            "Monitoring, Evaluation & Learning (MEL)",
+            "Machine Learning", 
+            "Python, R, SQL & Stata", 
             "Statistical Modeling", 
             "Agile Project Management", 
             "Data Visualization"
