@@ -19,47 +19,42 @@ def home():
             "Agile Project Management", 
             "Data Visualization"
         ],
+        # Each project shows the image at static/<image>. Just drop the file in static/images/.
         "projects": [
             {
                 "title": "Churn Prediction", 
                 "tag": "Data Science / Machine Learning",
-                "icon": "fa-solid fa-chart-pie",
-                "color": "teal",
+                "image": "images/churn.png",
                 "url": "https://github.com/Lajema/churn_prediction"
             },
             {
                 "title": "Kenya Economic Story", 
                 "tag": "Python / Economics",
-                "icon": "fa-solid fa-chart-line",
-                "color": "orange",
+                "image": "images/kenya_economic_story.png",
                 "url": "https://github.com/Lajema/Kenya-economic-story"
             },
             {
                 "title": "Marketing A/B Testing", 
                 "tag": "Python / Statsmodels",
-                "icon": "fa-solid fa-chart-line",
-                "color": "teal",
+                "image": "images/ab_testing.png",
                 "url": "https://github.com/Lajema/Marketing-AB-Testing"
             },
             {
                 "title": "M-Pesa Performance Dashboard", 
                 "tag": "Data Science",
-                "icon": "fa-solid fa-mobile-screen-button",
-                "color": "teal",
+                "image": "images/mpesa_dashboard.png",
                 "url": "https://github.com/Lajema/M-pesa_performace_dashboard"
             },
             {
                 "title": "Kenya Green Horizon Storyboard", 
                 "tag": "Data Analytics",
-                "icon": "fa-solid fa-leaf",
-                "color": "sage",
+                "image": "images/green_horizon.png",
                 "url": "https://github.com/Lajema/kenya_green_horizon_storyboard"
             },
             {
                 "title": "Kenyan Brand Sentiment Tracker", 
                 "tag": "Data Science / Machine Learning",
-                "icon": "fa-solid fa-comments",
-                "color": "orange",
+                "image": "images/brand_sentiment.png",
                 "url": "https://github.com/Lajema/Kenyan_brand_sentiment_tracker"
             }
         ],

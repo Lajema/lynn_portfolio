@@ -195,28 +195,26 @@ h2::after {
     border-top-color: var(--accent-orange);
 }
 
+/* Thumbnail box: icon is centred and scaled DOWN to fit with breathing room */
 .project-thumbnail {
     display: flex;
     align-items: center;
     justify-content: center;
     height: 140px;
+    padding: 1.4rem;               /* space around the icon */
     border-radius: 6px;
     margin-bottom: 1.2rem;
-    text-decoration: none;
-    color: var(--text-light);
-    font-size: 3rem;
+    overflow: hidden;
+    background: linear-gradient(135deg, var(--primary-teal), #0e424a); /* also shows if an image is missing */
 }
 
-.thumb-teal {
-    background: linear-gradient(135deg, var(--primary-teal), #0e424a);
-}
-
-.thumb-orange {
-    background: linear-gradient(135deg, var(--accent-orange), #c96400);
-}
-
-.thumb-sage {
-    background: linear-gradient(135deg, var(--secondary-sage), #5f7a72);
+.project-thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;           /* shows the WHOLE icon, never crops */
+    display: block;
+    /* Optional: black icons are hard to see on dark teal. Uncomment to turn them white:
+    filter: brightness(0) invert(1); */
 }
 
 .category {
