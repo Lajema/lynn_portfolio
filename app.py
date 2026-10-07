@@ -41,22 +41,10 @@ def home():
                 "url": "https://github.com/Lajema/Marketing-AB-Testing"
             },
             {
-                "title": "M-Pesa Performance Dashboard", 
-                "tag": "Data Science",
-                "image": "images/mpesa_dashboard.png",
-                "url": "https://github.com/Lajema/M-pesa_performace_dashboard"
-            },
-            {
                 "title": "Kenya Green Horizon Storyboard", 
                 "tag": "Data Analytics",
                 "image": "images/green_horizon.png",
                 "url": "https://github.com/Lajema/kenya_green_horizon_storyboard"
-            },
-            {
-                "title": "Kenyan Brand Sentiment Tracker", 
-                "tag": "Data Science / Machine Learning",
-                "image": "images/brand_sentiment.png",
-                "url": "https://github.com/Lajema/Kenyan_brand_sentiment_tracker"
             }
         ],
         "timeline": [
